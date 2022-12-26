@@ -1,20 +1,19 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import { counterReducer } from '../reducers/counterReducer';
 import '../styles/App.css';
 const App = () => {
-const initialState = {count:0};
-const [state,dispatch] = useReducer(counterReducer,initialState)
-const [fName,setName] = useState('sumit')
 
-const handleUpdateName = () => {
-  setName('Raghu')
-}
+  const initialState = 0;
+const [state,dispatch] = useReducer(counterReducer, initialState)
   return (
     <div id="main">
-      <p>Count: {state.count} {fName}</p>
-      <button onClick={() => dispatch({type:'increment'})}>INC</button>
-      <button onClick={() => dispatch({type:'decrement'})}>DEC</button>
-      <button onClick={handleUpdateName}>update Fname</button>
+      <span id='counter'>{state}</span>
+      <div>
+        <button id='increment-btn' onClick={() => dispatch({type: "INCREMENT"})}>In</button>
+        <button id='decrement-btn' onClick={() => dispatch({type: "DECREMENT"})}>Dec</button>
+      </div>
+
+
     </div>
   )
 }
